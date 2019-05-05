@@ -9,9 +9,9 @@ namespace Zad_1_Kasyno
 {
     class DataContext
     {
-        public Dictionary<int, Katalog> Gra { get; set; } = new Dictionary<int, Katalog>();
+        public Dictionary<int, Katalog> Gry { get; set; } = new Dictionary<int, Katalog>();
 
-        public ObservableCollection<OpisStanu> OpisStanu { get; set; } = new ObservableCollection<OpisStanu>();
+        public ObservableCollection<OpisStanu> OpisyStanu { get; set; } = new ObservableCollection<OpisStanu>();
 
         public List<Wykaz> Gracze { get; set; } = new List<Wykaz>();
 
