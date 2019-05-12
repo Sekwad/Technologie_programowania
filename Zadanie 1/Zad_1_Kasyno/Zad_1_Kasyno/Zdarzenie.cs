@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zad_1_Kasyno
 {
-    class Zdarzenie
+    public class Zdarzenie
     {
         public int Id { get; set; }
         public OpisStanu Opisstanu { get; set; }

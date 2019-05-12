@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Zad_1_Kasyno
 {
-    class DataContext
+    public class DataContext
     {
         public Dictionary<int, Katalog> Gry { get; set; } = new Dictionary<int, Katalog>();
 

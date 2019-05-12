@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zad_1_Kasyno
 {
-    class OpisStanu
+    public class OpisStanu
     {
         public int Id { get; set; }
         public Katalog Gra { get; set; }

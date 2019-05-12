@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Zad_1_Kasyno
 {
-    class DataRepository
+    public class DataRepository
     {
         protected DataContext DataContext = new DataContext();
 
@@ -63,6 +63,17 @@ namespace Zad_1_Kasyno
 
         }
 
+        public Wykaz PobierzGraczaPoId(int id)
+        {
+            if (DataContext.Gracze.Exists(x => x.Id == id))
+            {
+
+                return DataContext.Gracze.First(x => x.Id == id);
+            }
+            else
+                throw new ArgumentNullException();
+
+        }
         #endregion
 
         #region Gra
@@ -113,9 +124,9 @@ namespace Zad_1_Kasyno
 
         #endregion
 
-        #region OpisyStanu
+        #region OpisStanu
 
-        public void DodajOpisyStanu(OpisStanu opisStanu)
+        public void DodajOpisStanu(OpisStanu opisStanu)
         {
             if (opisStanu != null)
                 DataContext.OpisyStanu.Add(opisStanu);
@@ -123,7 +134,7 @@ namespace Zad_1_Kasyno
                 throw new ArgumentNullException();
         }
 
-        public OpisStanu PobierzOpisyStanuPoId(int id)
+        public OpisStanu PobierzOpisStanuPoId(int id)
         {
             if (DataContext.OpisyStanu.Any(x => x.Id == id))
                 return DataContext.OpisyStanu.First(x => x.Id == id);
@@ -131,7 +142,7 @@ namespace Zad_1_Kasyno
                 return null;
         }
 
-        public ObservableCollection <OpisStanu> PobierzWszystkieOpisyStanu()
+        public ObservableCollection <OpisStanu> PobierzWszystkieOpisStanu()
         {
             return DataContext.OpisyStanu;
         }
@@ -202,6 +213,11 @@ namespace Zad_1_Kasyno
             }
             else
                 throw new ArgumentNullException();
+        }
+
+        public ObservableCollection<Zdarzenie> PobierzWszystkiePartie()
+        {
+            return DataContext.Partie;
         }
 
         public bool UsunPartiePoId(int id)

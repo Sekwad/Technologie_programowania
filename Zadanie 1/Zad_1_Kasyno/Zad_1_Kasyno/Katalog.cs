@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zad_1_Kasyno
 {
-    class Katalog
+    public class Katalog
     {
         public int Id { get; set; }
         public string Nazwa { get; set; }

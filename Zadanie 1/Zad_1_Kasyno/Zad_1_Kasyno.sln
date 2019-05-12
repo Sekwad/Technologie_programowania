@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zad_1_Kasyno", "Zad_1_Kasyno\Zad_1_Kasyno.csproj", "{076BB083-839D-4E54-8F5B-BDD5CE26BE77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP1APP", "TP1APP\TP1APP.csproj", "{6DE555F9-DB5E-46CD-BD21-2181F509259F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{076BB083-839D-4E54-8F5B-BDD5CE26BE77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{076BB083-839D-4E54-8F5B-BDD5CE26BE77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{076BB083-839D-4E54-8F5B-BDD5CE26BE77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DE555F9-DB5E-46CD-BD21-2181F509259F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DE555F9-DB5E-46CD-BD21-2181F509259F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DE555F9-DB5E-46CD-BD21-2181F509259F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DE555F9-DB5E-46CD-BD21-2181F509259F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
