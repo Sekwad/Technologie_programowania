@@ -9,6 +9,11 @@ namespace Zad_1_Kasyno
 {
     public class DataRepository
     {
+        public DataRepository(IWypelnianie wyp)
+        {
+            wyp.Wypelnij(DataContext);
+        }
+
         protected DataContext DataContext = new DataContext();
 
         #region Gracz

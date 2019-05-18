@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zad_1_Kasyno
 {
-    public interface Wypelnianie
+    public interface IWypelnianie
     {
         void Wypelnij(DataContext dataContext);
     }
