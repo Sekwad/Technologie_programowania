@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Kasyno" Class="AdventureWorksDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SEKWAD-PC\SQLEXPRESS;Initial Catalog=Kasyno;Integrated Security=True" SettingsObjectName="Data.Properties.Settings" SettingsPropertyName="KasynoConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Gry" Member="Gry">
+    <Type Name="Gry">
+      <Column Name="idG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nazwa" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="wygrana" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cenaWejsciowa" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="Gry_OpisyStanu" Member="OpisyStanu" ThisKey="idG" OtherKey="idG" Type="OpisyStanu" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Klienci" Member="Klienci">
+    <Type Name="Klienci">
+      <Column Name="idK" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="imieK" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="nazwiskoK" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="telefon" Type="System.String" DbType="Char(9) NOT NULL" CanBeNull="false" />
+      <Column Name="adres" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Association Name="Klienci_Partie" Member="Partie" ThisKey="idK" OtherKey="idK" Type="Partie" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OpisyStanu" Member="OpisyStanu">
+    <Type Name="OpisyStanu">
+      <Column Name="idOS" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iloscGraczy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="czySkonczona" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="mnoznikWygranej" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Association Name="OpisyStanu_Partie" Member="Partie" ThisKey="idOS" OtherKey="idOS" Type="Partie" />
+      <Association Name="Gry_OpisyStanu" Member="Gry" ThisKey="idG" OtherKey="idG" Type="Gry" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Partie" Member="Partie">
+    <Type Name="Partie">
+      <Column Name="idP" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idOS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dataGry" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Klienci_Partie" Member="Klienci" ThisKey="idK" OtherKey="idK" Type="Klienci" IsForeignKey="true" />
+      <Association Name="OpisyStanu_Partie" Member="OpisyStanu" ThisKey="idOS" OtherKey="idOS" Type="OpisyStanu" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
