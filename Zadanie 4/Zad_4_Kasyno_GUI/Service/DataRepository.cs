@@ -13,24 +13,39 @@ using Data;
 
 namespace Zad4_4_Kasyno_GUI.Service
 {
-    public class DataService : IDisposable
+    public class DataRepository : IDisposable
     {
         private AdventureWorksDataContext Context { get; }
 
-        public DataService()
+        public DataRepository()
         {
             Context = new AdventureWorksDataContext();
         }
 
-        public DataService(string connection)
+        public DataRepository(string connection)
         {
             Context = new AdventureWorksDataContext(connection);
         }
 
         #region Create
-    
 
-        
+        public void AddKlient(out int id,  Klienci klient)
+        {
+            Klienci nowyKlient = new Klienci()
+            {
+                idK = klient.idK,
+                imieK = klient.imieK,
+                nazwiskoK = klient.nazwiskoK,
+                adres = klient.adres,
+                telefon = klient.telefon
+            };
+            Context.Klienci.InsertOnSubmit(nowyKlient);
+            Context.SubmitChanges();
+
+            id = nowyKlient.idK;
+            
+        }
+
         #endregion
 
         #region Read
