@@ -3,15 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Zad_4_Kasyno.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="270"
-      Title="PanelKlientow">
+      >
 
     <DataGrid x:Name="panelKlientow" ItemsSource="{Binding Klienci}" SelectedItem="{Binding WybranyKlient, Mode=TwoWay}" IsReadOnly="True"
               AutoGenerateColumns="False" GridLinesVisibility="None" HeadersVisibility="Column" AlternatingRowBackground="#FFB4D9E6" SelectionMode="Single" SelectionChanged="panelKlientow_SelectionChanged">
         <DataGrid.Columns>
-            <DataGridTextColumn Header="ID" Binding="{Binding KlientID}" MinWidth="50">
+            <DataGridTextColumn Header="ID" Binding="{Binding IdK}" MinWidth="50">
                 <DataGridTextColumn.ElementStyle>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="HorizontalAlignment" Value="Right"/>

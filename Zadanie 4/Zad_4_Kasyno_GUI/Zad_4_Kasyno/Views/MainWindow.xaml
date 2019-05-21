@@ -1,9 +1,9 @@
-﻿<Window x:Class="Zad_4_Kasyno.MainWindow"
+﻿<Window x:Class="Zad_4_Kasyno.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Zad_4_Kasyno"
+        xmlns:local="clr-namespace:Zad_4_Kasyno.Views"
         xmlns:viemModel="clr-namespace:Zad_4_Kasyno.ViewModels"
         mc:Ignorable="d"
         Title="Kasyno" Height="450" Width="920">
@@ -20,8 +20,8 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <local:CustomersGrid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0, 0, 5, 0" DataContext="{StaticResource KlientVM}"/>
-       
+        <local:PanelKlientow Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0, 0, 5, 0" DataContext="{StaticResource KlientVM}"/>
+        <local:KlienciCRUD Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" DataContext="{StaticResource KlientVM}"/>
 
     </Grid>
 </Window>

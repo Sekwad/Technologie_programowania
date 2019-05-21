@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Zad_4_Kasyno
+namespace Zad_4_Kasyno.Views
 {
     /// <summary>
     /// Logika interakcji dla klasy MainWindow.xaml
@@ -24,5 +24,13 @@ namespace Zad_4_Kasyno
         {
             InitializeComponent();
         }
+
+
+
+        private void ListaKlientow_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

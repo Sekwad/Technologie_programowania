@@ -58,9 +58,17 @@
     <Compile Include="ViewModels\CommandHandler.cs" />
     <Compile Include="ViewModels\KlientViewModels.cs" />
     <Compile Include="ViewModels\ObservedObject.cs" />
+    <Compile Include="ViewModels\Validator.cs" />
+    <Compile Include="Views\KlienciCRUD.xaml.cs">
+      <DependentUpon>KlienciCRUD.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PanelKlientow.xaml.cs">
       <DependentUpon>PanelKlientow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\KlienciCRUD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

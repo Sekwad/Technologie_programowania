@@ -18,7 +18,7 @@ namespace Zad_4_Kasyno.Views
     /// <summary>
     /// Logika interakcji dla klasy PanelKlientow.xaml
     /// </summary>
-    public partial class PanelKlientow : Page
+    public partial class PanelKlientow : UserControl
     {
         public PanelKlientow()
         {
