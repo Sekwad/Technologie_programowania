@@ -10,15 +10,15 @@
     <DataGrid x:Name="panelKlientow" ItemsSource="{Binding Klienci}" SelectedItem="{Binding WybranyKlient, Mode=TwoWay}" IsReadOnly="True"
               AutoGenerateColumns="False" GridLinesVisibility="None" HeadersVisibility="Column" AlternatingRowBackground="#FFB4D9E6" SelectionMode="Single" SelectionChanged="panelKlientow_SelectionChanged">
         <DataGrid.Columns>
-            <DataGridTextColumn Header="ID" Binding="{Binding IdK}" MinWidth="50">
+            <DataGridTextColumn Header="ID" Binding="{Binding ID}" MinWidth="50">
                 <DataGridTextColumn.ElementStyle>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="HorizontalAlignment" Value="Right"/>
                     </Style>
                 </DataGridTextColumn.ElementStyle>
             </DataGridTextColumn>
-            <DataGridTextColumn Header="Imię" Binding="{Binding ImieK}" MinWidth="110"/>
-            <DataGridTextColumn Header="Nazwisko" Binding="{Binding NazwiskoK}" MinWidth="110"/>
+            <DataGridTextColumn Header="Imię" Binding="{Binding Imie}" MinWidth="110"/>
+            <DataGridTextColumn Header="Nazwisko" Binding="{Binding Nazwisko}" MinWidth="110"/>
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

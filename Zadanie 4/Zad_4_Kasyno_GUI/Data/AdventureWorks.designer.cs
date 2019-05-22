@@ -22,7 +22,7 @@ namespace Data
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Kasyno")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="KasynoT")]
 	public partial class AdventureWorksDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -45,7 +45,7 @@ namespace Data
     #endregion
 		
 		public AdventureWorksDataContext() : 
-				base(global::Data.Properties.Settings.Default.KasynoConnectionString, mappingSource)
+				base(global::Data.Properties.Settings.Default.KasynoTConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

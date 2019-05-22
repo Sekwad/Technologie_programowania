@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 using Service;
 using Zad4_4_Kasyno_GUI.Service;
 using Data;
+using System.IO;
 
 namespace Zad_4_Kasyno.Models
 {
     public class ListaKlientow
     {
-        private DataRepository _DataRepository { get; set; } = new DataRepository();
+        private static string DBRelativePath { get; set; } = @"KasynoT.mdf";
+        private static string TestingWorkingFolder { get; set; } = Environment.CurrentDirectory;
+        private static string DBPath { get; set; } = Path.Combine(TestingWorkingFolder, DBRelativePath);
+        public static string ConnectionString { get; set; } = $@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename={DBPath};Integrated Security = True; Connect Timeout = 30;";
+        private DataRepository _DataRepository { get; set; } = new DataRepository(ConnectionString);
         private readonly List<Klienci> _klienci = new List<Klienci>();
 
         public IEnumerable<Klienci> KlienciFromModel
