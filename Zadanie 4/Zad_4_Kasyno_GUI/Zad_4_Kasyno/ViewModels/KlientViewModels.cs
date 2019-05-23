@@ -64,18 +64,18 @@ namespace Zad_4_Kasyno.ViewModels
             set { id = value; OnPropertyChanged("ID"); }
         }
 
-        private string imie = string.Empty;
-        public string Imie
-        {
-            get { return imie; }
-            set { imie = value; OnPropertyChanged("Imie"); }
-        }
-
         private string nazwisko = string.Empty;
         public string Nazwisko
         {
             get { return nazwisko; }
             set { nazwisko = value; OnPropertyChanged("Nazwisko"); }
+        }
+
+        private string imie = string.Empty;
+        public string Imie
+        {
+            get { return imie; }
+            set { imie = value; OnPropertyChanged("Imie"); }
         }
 
         private string adres = string.Empty;
@@ -89,7 +89,7 @@ namespace Zad_4_Kasyno.ViewModels
         public string Telefon
         {
             get { return telefon; }
-            set { telefon = value; OnPropertyChanged("Title"); }
+            set { telefon = value; OnPropertyChanged("Telefon"); }
         }
 
 
@@ -122,24 +122,25 @@ namespace Zad_4_Kasyno.ViewModels
             ClearCommand = new CommandHandler(ClearTextBoxes, () => true);
         }
 
-        
+        #region Commands
+
         private void AddKlient()
         {
-            int id = -1;
+            
             
             Klienci klient = new Klienci()
             {
-                idK = this.id,
-                imieK = this.imie,
-                nazwiskoK = this.nazwisko,
-                 telefon = this.telefon,
-                 adres = this.adres
+                idK = this.ID,
+                imieK = this.Imie,
+                nazwiskoK = this.Nazwisko,
+                telefon = this.Telefon,
+                adres = this.Adres
             };
 
             Task taskAdd = Task.Run(() => { _KlienciModel.AddKlient(out id,  klient); });
             taskAdd.Wait();
 
-            klient.idK = id;
+            klient.idK = ID;
             
 
             Klienci.Add(klient);
@@ -147,23 +148,50 @@ namespace Zad_4_Kasyno.ViewModels
 
         private void EditCustomer()
         {
+            ID = WybranyKlient.idK;
+            Imie = WybranyKlient.imieK;
+            Nazwisko = WybranyKlient.nazwiskoK;
+            Adres = WybranyKlient.adres;
+            Telefon = WybranyKlient.telefon;
             
         }
 
         private void UpdateCustomer()
         {
-            
+            Klienci klient = new Klienci()
+            {
+                idK = this.ID,
+                imieK = this.Imie,
+                nazwiskoK = this.Nazwisko,
+                telefon = this.Telefon,
+                adres = this.Adres
+            };
+
+            Task.Run(() => { _KlienciModel.UpdateKlient(klient); });
+            Klienci nowyKlient = Klienci.SingleOrDefault(c => c.idK == klient.idK);
+            nowyKlient.imieK = klient.imieK;
+            nowyKlient.nazwiskoK = klient.nazwiskoK;
+            nowyKlient.telefon = klient.telefon;
+            nowyKlient.adres = klient.adres;
+
         }
 
         private void DeleteCustomer()
         {
             Task.Run(() => { _KlienciModel.DeleteKlient(WybranyKlient); });
             Klienci.Remove(WybranyKlient);
+            ID = Klienci.Count + 1;
         }
 
         private void ClearTextBoxes()
         {
+            ID = Klienci.Count+1;
+            Imie = string.Empty;
+            Nazwisko = string.Empty;
+            Telefon = string.Empty;
+            Adres = string.Empty;
             
         }
+        #endregion
     }
 }

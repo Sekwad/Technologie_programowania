@@ -34,16 +34,23 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="ID" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,13,0,0" RenderTransformOrigin="0.5,0.5" Width="50" Height="26"/>
-        <TextBox x:Name="ID" Text="{Binding ID}" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Width="50" Margin="30,41,0,48" IsEnabled="False"/>
-
+        <TextBox x:Name="ID" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Width="50" Margin="30,41,0,48" IsEnabled="False">
+            <TextBox.Text>
+                <Binding Path="ID" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <vm:Validator Min="1" Max="3" ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
 
         <Label Content="Imię" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10.2,13,151.4,0" Width="136" Height="26"/>
         <TextBox x:Name="tbFirstName" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="136" Margin="10.2,41,151.4,48">
             <TextBox.Text>
-                <Binding Path="imie" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Imie" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <vm:Validator Min="1" Max="50" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -53,9 +60,9 @@
         <Label Content="Nazwisko" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9.6,13,0,0" Width="120" Height="26"/>
         <TextBox x:Name="tbLastName" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Width="120" Margin="9.6,41,0,48" RenderTransformOrigin="0.375,-0.426">
             <TextBox.Text>
-                <Binding Path="nazwisko" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Nazwisko" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <vm:Validator Min="1" Max="50" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -64,9 +71,9 @@
         <Label Content="Adres" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10.2,10,247.4,0" Height="26" Width="40"/>
         <TextBox x:Name="tbAddress" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="200" Margin="10.2,36,87.4,53.8">
             <TextBox.Text>
-                <Binding Path="adres" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Adres" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <vm:Validator Min="1" Max="50" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -76,9 +83,9 @@
         <Label Content="Telefon" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="9.6,10,122,0" Height="26" Width="50"/>
         <TextBox x:Name="tbPhone" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="120" Margin="9.6,36,52,53.8">
             <TextBox.Text>
-                <Binding Path="telefon" UpdateSourceTrigger="PropertyChanged">
+                <Binding Path="Telefon" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-
+                        <vm:Validator Min="9" Max="9" ValidatesOnTargetUpdated="True"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
