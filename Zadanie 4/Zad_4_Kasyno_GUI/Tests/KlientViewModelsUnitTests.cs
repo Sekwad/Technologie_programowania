@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Tests.TestData;
 using Xunit;
 using Zad_4_Kasyno.ViewModels;
+using Zad_4_Kasyno;
 
 namespace Tests
 {

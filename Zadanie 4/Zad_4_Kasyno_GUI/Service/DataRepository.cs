@@ -33,7 +33,7 @@ namespace Zad4_4_Kasyno_GUI.Service
         {
             Klienci nowyKlient = new Klienci()
             {
-                idK = klient.idK,
+                
                 imieK = klient.imieK,
                 nazwiskoK = klient.nazwiskoK,
                 adres = klient.adres,

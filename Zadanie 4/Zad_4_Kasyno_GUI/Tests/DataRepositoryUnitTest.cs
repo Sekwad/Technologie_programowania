@@ -9,12 +9,12 @@ using Xunit;
 
 namespace Tests
 {
-    public class DataRepositoryUnitTest : IClassFixture<DataRepositoryFixture>
+    public class DataRepositoryUnitTest 
     {
         private DataRepositoryFixture Fixture { get; set; }
-        public DataRepositoryUnitTest(DataRepositoryFixture fixture)
+        public DataRepositoryUnitTest()
         {
-            Fixture = fixture;
+            Fixture = new DataRepositoryFixture();
         }
 
         [Fact]
@@ -26,9 +26,11 @@ namespace Tests
                 IEnumerable<Klienci> listFromBase = Fixture.ServiceUnderTest.GetAllContent();
                 Assert.Empty(listFromBase);
 
+                int count = listFromBase.Count();
+
                 //Create
                 Fixture.ServiceUnderTest.AddKlient(out id, TestDataGenerator.klient1);
-                Assert.Equal(1, id);
+                Assert.Equal(count+1, listFromBase.Count());
                 Fixture.ServiceUnderTest.AddKlient(out id, TestDataGenerator.klient2);
                 Assert.Equal(2, id);
                 Assert.Equal(2, listFromBase.Count());
@@ -51,6 +53,8 @@ namespace Tests
 
                 //Delete
                 Fixture.ServiceUnderTest.DeleteContent(2);
+          
+
                 Assert.Single(listFromBase);
                 Assert.Equal(1, listFromBase.ElementAt(0).idK);
                 Assert.Equal("Sebastian", listFromBase.ElementAt(0).imieK);
