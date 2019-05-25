@@ -46,10 +46,10 @@ namespace Tests
     {
             KlientViewModels viewModel = new KlientViewModels(DataRepositoryFixture.ConnectionString)
         {
-                Imie = TestDataGenerator.klient3.imieK,
+                Imie = TestDataGenerator.Klient3.imieK,
         };
 
-            Assert.Equal(TestDataGenerator.klient3.imieK, viewModel.Imie);
+            Assert.Equal(TestDataGenerator.Klient3.imieK, viewModel.Imie);
 
         viewModel.ClearCommand.Execute(null);
 
@@ -61,8 +61,8 @@ namespace Tests
     public void DeleteCommandTest()
     {
             KlientViewModels viewModel = new KlientViewModels(DataRepositoryFixture.ConnectionString);
-        viewModel.Klienci.Add(TestDataGenerator.klient3);
-        viewModel.WybranyKlient = TestDataGenerator.klient3;
+        viewModel.Klienci.Add(TestDataGenerator.Klient3);
+        viewModel.WybranyKlient = TestDataGenerator.Klient3;
 
         try
         {
@@ -83,26 +83,26 @@ namespace Tests
     public void EditCommandTest()
     {
             KlientViewModels viewModel = new KlientViewModels(DataRepositoryFixture.ConnectionString);
-        viewModel.WybranyKlient = TestDataGenerator.klient3;
+        viewModel.WybranyKlient = TestDataGenerator.Klient3;
 
         viewModel.EditCommand.Execute(null);
 
-        Assert.Equal(TestDataGenerator.klient3.idK, viewModel.ID);
-        Assert.Equal(TestDataGenerator.klient3.imieK, viewModel.Imie);
+        Assert.Equal(TestDataGenerator.Klient3.idK, viewModel.ID);
+        Assert.Equal(TestDataGenerator.Klient3.imieK, viewModel.Imie);
     }
 
     [Fact]
     public void UpdateCommandTest()
     {
             KlientViewModels viewModel = new KlientViewModels(DataRepositoryFixture.ConnectionString);
-        viewModel.Klienci.Add(TestDataGenerator.klient3);
+        viewModel.Klienci.Add(TestDataGenerator.Klient3);
         viewModel.ID = 3;
             viewModel.Adres = "Lodz";
 
         try
         {
             Assert.Single(viewModel.Klienci);
-            Assert.Equal(TestDataGenerator.klient3.adres, viewModel.Klienci.First().adres);
+            Assert.Equal(TestDataGenerator.Klient3.adres, viewModel.Klienci.First().adres);
             Assert.True(viewModel.UpdateCommand.CanExecute(null));
 
             viewModel.UpdateCommand.Execute(null);

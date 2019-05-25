@@ -39,11 +39,30 @@ namespace Zad4_4_Kasyno_GUI.Service
                 adres = klient.adres,
                 telefon = klient.telefon
             };
+            
             Context.Klienci.InsertOnSubmit(nowyKlient);
             Context.SubmitChanges();
-
             id = nowyKlient.idK;
             
+            
+        }
+
+        public void AddKlient( int id, Klienci klient)
+        {
+            Klienci nowyKlient = new Klienci()
+            {
+                idK = klient.idK,
+                imieK = klient.imieK,
+                nazwiskoK = klient.nazwiskoK,
+                adres = klient.adres,
+                telefon = klient.telefon
+            };
+            
+            Context.Klienci.InsertOnSubmit(nowyKlient);
+            Context.SubmitChanges();
+//id = nowyKlient.idK;
+
+
         }
 
         #endregion
@@ -66,14 +85,15 @@ namespace Zad4_4_Kasyno_GUI.Service
         #region Update
         public void UpdateContent(int id, Klienci newKlient)
         {
+            
             Klienci klient = GetContent(id).SingleOrDefault();
 
             klient.idK = newKlient.idK;
-            klient.imieK = newKlient.imieK ;
-            klient.nazwiskoK = newKlient.nazwiskoK ;
-            klient.telefon = newKlient.telefon ;
-            klient.adres = newKlient.adres ;
-
+            klient.imieK = newKlient.imieK;
+            klient.nazwiskoK = newKlient.nazwiskoK;
+            klient.telefon = newKlient.telefon;
+            klient.adres = newKlient.adres;
+        
             Context.SubmitChanges();
         }
         #endregion
@@ -102,6 +122,8 @@ namespace Zad4_4_Kasyno_GUI.Service
         {
             Context.Partie.DeleteAllOnSubmit(Context.Partie);
             Context.Klienci.DeleteAllOnSubmit(Context.Klienci);
+            //Context.Gry.DeleteAllOnSubmit(Context.Gry);
+            //Context.OpisyStanu.DeleteAllOnSubmit(Context.OpisyStanu);
             Context.SubmitChanges();
         }
 
