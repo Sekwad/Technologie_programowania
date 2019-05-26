@@ -47,23 +47,7 @@ namespace Zad4_4_Kasyno_GUI.Service
             
         }
 
-        public void AddKlient( int id, Klienci klient)
-        {
-            Klienci nowyKlient = new Klienci()
-            {
-                idK = klient.idK,
-                imieK = klient.imieK,
-                nazwiskoK = klient.nazwiskoK,
-                adres = klient.adres,
-                telefon = klient.telefon
-            };
-            
-            Context.Klienci.InsertOnSubmit(nowyKlient);
-            Context.SubmitChanges();
-//id = nowyKlient.idK;
-
-
-        }
+      
 
         #endregion
 
@@ -88,10 +72,15 @@ namespace Zad4_4_Kasyno_GUI.Service
             
             Klienci klient = GetContent(id).SingleOrDefault();
 
-            klient.idK = newKlient.idK;
+            //klient.idK = newKlient.idK;
             klient.imieK = newKlient.imieK;
             klient.nazwiskoK = newKlient.nazwiskoK;
-            klient.telefon = newKlient.telefon;
+
+            if (!newKlient.telefon.Equals(klient.telefon))
+            {
+                klient.telefon = newKlient.telefon; 
+            }
+
             klient.adres = newKlient.adres;
         
             Context.SubmitChanges();

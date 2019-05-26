@@ -30,45 +30,37 @@ namespace Tests
 
                 //Create
                 Fixture.ServiceUnderTest.AddKlient(out id, TestDataGenerator.Klient1);
-                //Assert.Equal(1, id);
                 Assert.Equal(count+1, listFromBase.Count());
                 Fixture.ServiceUnderTest.AddKlient(out id, TestDataGenerator.Klient2);
-                //Assert.Equal(2, id);
+                
                
-                Assert.Equal(2, listFromBase.Count());
-
-                //Assert.Equal(1, listFromBase.ElementAt(0).idK);
+                Assert.Equal(2, listFromBase.Count());               
                 Assert.Equal("Sebastian", listFromBase.ElementAt(0).imieK);
-                //Assert.Equal(2, listFromBase.ElementAt(1).idK);
                 Assert.Equal("Krzysztof", listFromBase.ElementAt(1).imieK);
 
                 //Read
                 Klienci cFromBase = Fixture.ServiceUnderTest.GetContent(12).SingleOrDefault();
-                //Assert.Equal(1, cFromBase.idK);
+                
                 Assert.Equal("Sebastian", cFromBase.imieK);
                 Assert.Equal("Sebastian", listFromBase.ElementAt(0).imieK);
 
+                //Update
+                Fixture.ServiceUnderTest.UpdateContent(12, TestDataGenerator.Klient1);
+                cFromBase = Fixture.ServiceUnderTest.GetContent(12).SingleOrDefault();
+                Assert.Equal(12, cFromBase.idK);
+                Assert.Equal("Sebastian", cFromBase.imieK);
 
                 //Delete
                 Fixture.ServiceUnderTest.DeleteContent(12);
           
 
                 Assert.Single(listFromBase);
-                //Assert.Equal(1, listFromBase.ElementAt(0).idK);
                 Assert.Equal("Krzysztof", listFromBase.ElementAt(0).imieK);
             }
             finally
             {
-                //Fixture.ServiceUnderTest.TruncateAllData();
+                Fixture.ServiceUnderTest.TruncateAllData();
             }
-        }
-
-        public void czyszczenie(DataRepositoryFixture fixture)
-        {
-            IEnumerable<Klienci> listFromBase = Fixture.ServiceUnderTest.GetAllContent();
-            for (int i = 0; i < listFromBase.Count(); i++)
-                fixture.ServiceUnderTest.DeleteContent(i);
-
         }
 
     }
