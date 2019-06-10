@@ -25,5 +25,10 @@ namespace Zad_4_Kasyno.Views
         {
             InitializeComponent();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

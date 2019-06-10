@@ -19,6 +19,7 @@
             </DataGridTextColumn>
             <DataGridTextColumn Header="Imię" Binding="{Binding imieK}" MinWidth="110"/>
             <DataGridTextColumn Header="Nazwisko" Binding="{Binding nazwiskoK}" MinWidth="110"/>
+            
         </DataGrid.Columns>
     </DataGrid>
 </UserControl>

@@ -33,8 +33,8 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="ID" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,13,0,0" RenderTransformOrigin="0.5,0.5" Width="50" Height="26"/>
-        <TextBox x:Name="ID" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Width="50" Margin="30,41,0,48" IsEnabled="False">
+        <Label Content="ID" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,31,0,0" RenderTransformOrigin="0.5,0.5" Width="50" Height="26"/>
+        <TextBox x:Name="ID" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Width="50" Margin="65,34,0,55" IsEnabled="False">
             <TextBox.Text>
                 <Binding Path="ID" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -45,8 +45,8 @@
         </TextBox>
 
 
-        <Label Content="Imię" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10.2,13,151.4,0" Width="136" Height="26"/>
-        <TextBox x:Name="tbFirstName" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="136" Margin="10.2,41,151.4,48">
+        <Label Content="Imię" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10.2,31,232.4,0" Width="55" Height="26"/>
+        <TextBox x:Name="tbFirstName" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="136" Margin="55.2,34,106.4,55">
             <TextBox.Text>
                 <Binding Path="Imie" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -57,8 +57,8 @@
         </TextBox>
 
 
-        <Label Content="Nazwisko" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9.6,13,0,0" Width="120" Height="26"/>
-        <TextBox x:Name="tbLastName" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Width="120" Margin="9.6,41,0,48" RenderTransformOrigin="0.375,-0.426">
+        <Label Content="Nazwisko" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="233.2,34,0,0" Width="64" Height="26"/>
+        <TextBox x:Name="tbLastName" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Width="120" Margin="9.6,34,0,55" RenderTransformOrigin="0.375,-0.426">
             <TextBox.Text>
                 <Binding Path="Nazwisko" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -68,8 +68,8 @@
             </TextBox.Text>
         </TextBox>
 
-        <Label Content="Adres" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10.2,10,247.4,0" Height="26" Width="40"/>
-        <TextBox x:Name="tbAddress" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="200" Margin="10.2,36,87.4,53.8">
+        <Label Content="Adres" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,62,70.8,0" Height="26" Width="40" RenderTransformOrigin="0.46,-1.177"/>
+        <TextBox x:Name="tbAddress" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="200" Margin="65,65,153.4,24" Grid.ColumnSpan="2">
             <TextBox.Text>
                 <Binding Path="Adres" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -80,8 +80,8 @@
         </TextBox>
 
 
-        <Label Content="Telefon" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="9.6,10,122,0" Height="26" Width="50"/>
-        <TextBox x:Name="tbPhone" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="120" Margin="9.6,36,52,53.8">
+        <Label Content="Telefon" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="233.2,65,14.4,0" Height="23" Width="50"/>
+        <TextBox x:Name="tbPhone" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="120" Margin="9.6,65,52,24">
             <TextBox.Text>
                 <Binding Path="Telefon" UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -93,9 +93,9 @@
 
 
 
-        <Button Content="Wyczyść" Command="{Binding ClearCommand}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="75" Margin="180.2,13.2,42.4,75.8"/>
+        <Button Content="Wyczyść" Command="{Binding ClearCommand}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="75" Margin="36,28,9.8,61.8"/>
 
-        <Button Content="Dodaj" Command="{Binding AddCommand}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Height="50" Width="75" Margin="54.6,13.2,0,48.8">
+        <Button Content="Dodaj" Command="{Binding AddCommand}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="50" Margin="41.2,1,181.4,61.8">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="IsEnabled" Value="false" />
@@ -120,9 +120,9 @@
             </Button.Style>
         </Button>
 
-        <Button Content="Edytuj wybrany wiersz" Command="{Binding EditCommand}" Grid.Row="2" VerticalAlignment="Top" Height="23" Width="130" HorizontalAlignment="Center" Margin="10.2,13.2,157.4,0" Grid.Column="1"/>
+        <Button Content="Edytuj wybrany wiersz" Command="{Binding EditCommand}" Grid.Row="1" VerticalAlignment="Top" Height="23" Width="130" HorizontalAlignment="Center" Margin="10,0,278.4,0" Grid.ColumnSpan="2"/>
 
-        <Button Content="Zapisz" Command="{Binding UpdateCommand}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Height="50" Width="75" HorizontalAlignment="Left" Margin="135.2,10.2,0,52.6">
+        <Button Content="Zapisz" Command="{Binding UpdateCommand}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="50" Width="75" HorizontalAlignment="Left" Margin="144.2,1,0,61.8">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="IsEnabled" Value="false" />
@@ -144,7 +144,22 @@
             </Button.Style>
         </Button>
 
-        <Button Content="Usuń wybrany wiersz" Command="{Binding DeleteCommand}" Grid.Row="3" Grid.Column="1"  VerticalAlignment="Center" Height="50" Margin="248.2,10.2,10,52.6" Grid.ColumnSpan="2"/>
+        <Button Content="Usuń wybrany wiersz" Command="{Binding DeleteCommand}" Grid.Row="1" Grid.Column="1"  VerticalAlignment="Center" Height="50" Margin="248.2,1,10,61.8" Grid.ColumnSpan="2"/>
+        <Button Content="Graj" Command="{Binding PlayCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="0.2,10.2,0,0" Grid.Row="3" VerticalAlignment="Top" Width="96" RenderTransformOrigin="-0.469,-0.052" Height="50"/>
+        <Label Content="Portfel" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,56,0,0" RenderTransformOrigin="0.5,0.5" Width="50" Height="26"/>
+        <TextBox x:Name="Portfel" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Width="50" Margin="65,59,0,30.8" IsEnabled="False">
+            <Binding Path="Portfel" UpdateSourceTrigger="PropertyChanged">
+                <Binding.ValidationRules>
+                    <vm:Validator Min="1" Max="6" ValidatesOnTargetUpdated="True"/>
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox>
+        <Label x:Name="label" Content="Uwagi:" Grid.Column="1" HorizontalAlignment="Left" Margin="10.2,59,0,0" Grid.Row="1" VerticalAlignment="Top" Width="44"/>
+        <TextBox x:Name="uwagi" HorizontalAlignment="Center" VerticalAlignment="Center" Height="23" Width="200" Margin="59.2,59,38.4,30.8" Grid.Column="1" Grid.Row="1">
+            <Binding Path="Uwagi" UpdateSourceTrigger="PropertyChanged">
+                
+            </Binding>
+        </TextBox>
 
     </Grid>
 

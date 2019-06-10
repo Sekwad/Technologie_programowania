@@ -27,6 +27,8 @@ namespace Zad_4_Kasyno.Models
             }
         }
 
+    
+
         public ListaKlientow()
         {
             _klienci.AddRange(GetAllKlienci());

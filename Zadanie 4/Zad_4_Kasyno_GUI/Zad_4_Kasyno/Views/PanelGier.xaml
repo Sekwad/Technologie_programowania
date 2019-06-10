@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Zad_4_Kasyno.Views.PanelGier"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="220">
+    <DataGrid x:Name="panelGier" ItemsSource="{Binding Gry}" SelectedItem="{Binding WybranaGra, Mode=TwoWay}" IsReadOnly="True"
+              AutoGenerateColumns="False" GridLinesVisibility="None" HeadersVisibility="Column" AlternatingRowBackground="#FFB4D9E6" SelectionMode="Single" SelectionChanged="panelGier_SelectionChanged" Margin="0,0,0.4,-0.4">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="ID" Binding="{Binding idG}" MinWidth="25">
+                <DataGridTextColumn.ElementStyle>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                    </Style>
+                </DataGridTextColumn.ElementStyle>
+            </DataGridTextColumn>
+            <DataGridTextColumn Header="Nazwa" Binding="{Binding nazwa}" MinWidth="95"/>
+            <DataGridTextColumn Header="Cena Wejsciowa" Binding="{Binding cenaWejsciowa}" MinWidth="50"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

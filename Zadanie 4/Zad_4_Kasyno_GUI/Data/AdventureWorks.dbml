@@ -5,7 +5,7 @@
       <Column Name="idG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="nazwa" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="wygrana" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="cenaWejsciowa" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="cenaWejsciowa" Type="System.Single" DbType="float NOT NULL" CanBeNull="false" />
       <Association Name="Gry_OpisyStanu" Member="OpisyStanu" ThisKey="idG" OtherKey="idG" Type="OpisyStanu" />
     </Type>
   </Table>
@@ -16,6 +16,7 @@
       <Column Name="nazwiskoK" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
       <Column Name="telefon" Type="System.String" DbType="Char(9) NOT NULL" CanBeNull="false" />
       <Column Name="adres" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="portfel" Type="System.Single" DbType="float NOT NULL" CanBeNull="false" />
       <Association Name="Klienci_Partie" Member="Partie" ThisKey="idK" OtherKey="idK" Type="Partie" />
     </Type>
   </Table>

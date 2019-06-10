@@ -119,7 +119,7 @@ namespace Data
 		
 		private int _wygrana;
 		
-		private decimal _cenaWejsciowa;
+		private float _cenaWejsciowa;
 		
 		private EntitySet<OpisyStanu> _OpisyStanu;
 		
@@ -133,7 +133,7 @@ namespace Data
     partial void OnnazwaChanged();
     partial void OnwygranaChanging(int value);
     partial void OnwygranaChanged();
-    partial void OncenaWejsciowaChanging(decimal value);
+    partial void OncenaWejsciowaChanging(float value);
     partial void OncenaWejsciowaChanged();
     #endregion
 		
@@ -203,8 +203,8 @@ namespace Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cenaWejsciowa", DbType="Money NOT NULL")]
-		public decimal cenaWejsciowa
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cenaWejsciowa", DbType="float NOT NULL")]
+		public float cenaWejsciowa
 		{
 			get
 			{
@@ -285,6 +285,8 @@ namespace Data
 		
 		private string _adres;
 		
+		private float _portfel;
+		
 		private EntitySet<Partie> _Partie;
 		
     #region Extensibility Method Definitions
@@ -301,6 +303,8 @@ namespace Data
     partial void OntelefonChanged();
     partial void OnadresChanging(string value);
     partial void OnadresChanged();
+    partial void OnportfelChanging(float value);
+    partial void OnportfelChanged();
     #endregion
 		
 		public Klienci()
@@ -405,6 +409,26 @@ namespace Data
 					this._adres = value;
 					this.SendPropertyChanged("adres");
 					this.OnadresChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_portfel", DbType="float NOT NULL")]
+		public float portfel
+		{
+			get
+			{
+				return this._portfel;
+			}
+			set
+			{
+				if ((this._portfel != value))
+				{
+					this.OnportfelChanging(value);
+					this.SendPropertyChanging();
+					this._portfel = value;
+					this.SendPropertyChanged("portfel");
+					this.OnportfelChanged();
 				}
 			}
 		}

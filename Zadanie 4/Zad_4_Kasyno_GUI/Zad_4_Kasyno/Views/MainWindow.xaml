@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Zad_4_Kasyno.Views"
         xmlns:viemModel="clr-namespace:Zad_4_Kasyno.ViewModels"
         mc:Ignorable="d"
-        Title="Kasyno" Height="450" Width="920">
+        Title="Kasyno" Height="450" Width="1105">
     <Window.Resources>
         <viemModel:KlientViewModels x:Key="KlientVM"/>
     </Window.Resources>
@@ -22,6 +22,6 @@
 
         <local:PanelKlientow Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0, 0, 5, 0" DataContext="{StaticResource KlientVM}"/>
         <local:KlienciCRUD Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,0" DataContext="{StaticResource KlientVM}"/>
-
+        <local:PanelGier Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="605.4,0,-264.8,0" DataContext="{StaticResource KlientVM}"/>
     </Grid>
 </Window>

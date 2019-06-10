@@ -37,7 +37,8 @@ namespace Zad4_4_Kasyno_GUI.Service
                 imieK = klient.imieK,
                 nazwiskoK = klient.nazwiskoK,
                 adres = klient.adres,
-                telefon = klient.telefon
+                telefon = klient.telefon,
+                portfel = klient.portfel
             };
             
             Context.Klienci.InsertOnSubmit(nowyKlient);
@@ -45,6 +46,20 @@ namespace Zad4_4_Kasyno_GUI.Service
             id = nowyKlient.idK;
             
             
+        }
+
+        public void AddGra (out int id, Gry gra)
+        {
+            Gry nowaGra = new Gry()
+            {
+                nazwa = gra.nazwa,
+                wygrana = gra.wygrana,
+                cenaWejsciowa = gra.cenaWejsciowa
+
+            };
+            Context.Gry.InsertOnSubmit(nowaGra);
+            Context.SubmitChanges();
+            id = nowaGra.idG;
         }
 
       
@@ -64,7 +79,23 @@ namespace Zad4_4_Kasyno_GUI.Service
             return from _klienci in Context.Klienci
                    select _klienci;
         }
+
+        public IEnumerable<Gry> GetGra(int id)
+        {
+            return from _gry in Context.Gry
+                   where _gry.idG.Equals(id)
+                   select _gry;
+        }
+
+        public IEnumerable<Gry> GetAllGry()
+        {
+            return from _gry in Context.Gry
+                   select _gry;
+        }
+
         #endregion
+
+
 
         #region Update
         public void UpdateContent(int id, Klienci newKlient)
@@ -82,7 +113,17 @@ namespace Zad4_4_Kasyno_GUI.Service
             }
 
             klient.adres = newKlient.adres;
+            klient.portfel = newKlient.portfel;
         
+            Context.SubmitChanges();
+        }
+
+        public void UpdateGra (int id, Gry nowaGra)
+        {
+            Gry gra = GetGra(id).SingleOrDefault();
+            gra.nazwa = nowaGra.nazwa;
+            gra.wygrana = nowaGra.wygrana;
+            gra.cenaWejsciowa = nowaGra.cenaWejsciowa;
             Context.SubmitChanges();
         }
         #endregion
@@ -104,6 +145,23 @@ namespace Zad4_4_Kasyno_GUI.Service
 
             Context.SubmitChanges();
         }
+
+        public void DeleteGra(int id)
+        {
+            Gry gra = GetGra(id).SingleOrDefault();
+            IEnumerable<OpisyStanu> partie = from _Partie in Context.OpisyStanu
+                                         where _Partie.idG.Equals(gra.idG)
+                                         select _Partie;
+
+            foreach (OpisyStanu item in partie)
+            {
+                Context.OpisyStanu.DeleteOnSubmit(item);
+            }
+
+            Context.Gry.DeleteOnSubmit(gra);
+
+            Context.SubmitChanges();
+        }
         #endregion
 
         [Conditional("DEBUG")]
@@ -111,7 +169,7 @@ namespace Zad4_4_Kasyno_GUI.Service
         {
             Context.Partie.DeleteAllOnSubmit(Context.Partie);
             Context.Klienci.DeleteAllOnSubmit(Context.Klienci);
-            //Context.Gry.DeleteAllOnSubmit(Context.Gry);
+            Context.Gry.DeleteAllOnSubmit(Context.Gry);
             //Context.OpisyStanu.DeleteAllOnSubmit(Context.OpisyStanu);
             Context.SubmitChanges();
         }

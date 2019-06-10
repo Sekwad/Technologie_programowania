@@ -27,6 +27,20 @@ namespace Zad_4_Kasyno.ViewModels
             }
         }
 
+        private ListaGier _gryModel;
+        private ListaGier _GryModel
+        {
+            get
+            {
+                return _gryModel;
+            }
+            set
+            {
+                _gryModel = value;
+                Gry = new ObservableCollection<Gry>(value.GryFromModel);
+            }
+        }
+
         private ObservableCollection<Klienci> _klienci;
         public ObservableCollection<Klienci> Klienci
         {
@@ -38,6 +52,20 @@ namespace Zad_4_Kasyno.ViewModels
             {
                 _klienci = value;
                 OnPropertyChanged("Klienci");
+            }
+        }
+
+        private ObservableCollection<Gry> _gry;
+        public ObservableCollection<Gry> Gry
+        {
+            get
+            {
+                return _gry;
+            }
+            set
+            {
+                _gry = value;
+                OnPropertyChanged("Gry");
             }
         }
 
@@ -56,6 +84,23 @@ namespace Zad_4_Kasyno.ViewModels
             }
         }
 
+        private Gry _wybranaGra;
+        public Gry WybranaGra
+        {
+            get
+            {
+                return _wybranaGra;
+            }
+            set
+            {
+                _wybranaGra = value;
+                OnPropertyChanged("WybranaGra");
+                DeleteCommand.RaiseCanExecuteChanged();
+            }
+        }
+
+
+
         private int id = 0;
 
             public int ID
@@ -69,6 +114,13 @@ namespace Zad_4_Kasyno.ViewModels
         {
             get { return nazwisko; }
             set { nazwisko = value; OnPropertyChanged("Nazwisko"); }
+        }
+
+        private float portfel = 0;
+        public float Portfel
+        {
+            get { return portfel; }
+            set { portfel = value; OnPropertyChanged("Portfel"); }
         }
 
         private string imie = string.Empty;
@@ -92,34 +144,46 @@ namespace Zad_4_Kasyno.ViewModels
             set { telefon = value; OnPropertyChanged("Telefon"); }
         }
 
+        private string uwagi = string.Empty;
+        public string Uwagi
+        {
+            get { return uwagi; }
+            set { uwagi = value; OnPropertyChanged("Uwagi"); }
+        }
+
 
         public CommandHandler AddCommand { get; private set; }
         public CommandHandler UpdateCommand { get; private set; }
         public CommandHandler EditCommand { get; private set; }
         public CommandHandler DeleteCommand { get; private set; }
         public CommandHandler ClearCommand { get; private set; }
+        public CommandHandler PlayCommand { get; private set; }
 
 
         public KlientViewModels()
         {
             _KlienciModel = new ListaKlientow();
+            _GryModel = new ListaGier();
 
             AddCommand = new CommandHandler(AddKlient, () => true);
-            UpdateCommand = new CommandHandler(UpdateCustomer, () => true);
-            EditCommand = new CommandHandler(EditCustomer, () => true);
-            DeleteCommand = new CommandHandler(DeleteCustomer, () => WybranyKlient != null);
+            UpdateCommand = new CommandHandler(UpdateKlient, () => true);
+            EditCommand = new CommandHandler(EditKlient, () => true);
+            DeleteCommand = new CommandHandler(DeleteKlient, () => WybranyKlient != null);
             ClearCommand = new CommandHandler(ClearTextBoxes, () => true);
+            PlayCommand = new CommandHandler(Play, () => true);
         }
 
         public KlientViewModels(string connection)
         {
             _KlienciModel = new ListaKlientow(connection);
+            _GryModel = new ListaGier(connection);
 
             AddCommand = new CommandHandler(AddKlient, () => true);
-            UpdateCommand = new CommandHandler(UpdateCustomer, () => true);
-            EditCommand = new CommandHandler(EditCustomer, () => true);
-            DeleteCommand = new CommandHandler(DeleteCustomer, () => WybranyKlient != null);
+            UpdateCommand = new CommandHandler(UpdateKlient, () => true);
+            EditCommand = new CommandHandler(EditKlient, () => true);
+            DeleteCommand = new CommandHandler(DeleteKlient, () => WybranyKlient != null);
             ClearCommand = new CommandHandler(ClearTextBoxes, () => true);
+            PlayCommand = new CommandHandler(Play, () => true);
         }
 
         #region Commands
@@ -134,7 +198,8 @@ namespace Zad_4_Kasyno.ViewModels
                 imieK = this.Imie,
                 nazwiskoK = this.Nazwisko,
                 telefon = this.Telefon,
-                adres = this.Adres
+                adres = this.Adres,
+                portfel = 1000
             };
 
             Task taskAdd = Task.Run(() => { _KlienciModel.AddKlient(out id,  klient); });
@@ -146,17 +211,18 @@ namespace Zad_4_Kasyno.ViewModels
             Klienci.Add(klient);
         }
 
-        private void EditCustomer()
+        private void EditKlient()
         {
             ID = WybranyKlient.idK;
             Imie = WybranyKlient.imieK;
             Nazwisko = WybranyKlient.nazwiskoK;
             Adres = WybranyKlient.adres;
             Telefon = WybranyKlient.telefon;
+            Portfel = WybranyKlient.portfel;
             
         }
 
-        private void UpdateCustomer()
+        private void UpdateKlient()
         {
             Klienci klient = new Klienci()
             {
@@ -164,7 +230,8 @@ namespace Zad_4_Kasyno.ViewModels
                 imieK = this.Imie,
                 nazwiskoK = this.Nazwisko,
                 telefon = this.Telefon,
-                adres = this.Adres
+                adres = this.Adres,
+                portfel = this.Portfel
             };
 
             Task.Run(() => { _KlienciModel.UpdateKlient(klient); });
@@ -173,10 +240,11 @@ namespace Zad_4_Kasyno.ViewModels
             nowyKlient.nazwiskoK = klient.nazwiskoK;
             nowyKlient.telefon = klient.telefon;
             nowyKlient.adres = klient.adres;
+            nowyKlient.portfel = klient.portfel;
 
         }
 
-        private void DeleteCustomer()
+        private void DeleteKlient()
         {
             Task.Run(() => { _KlienciModel.DeleteKlient(WybranyKlient); });
             Klienci.Remove(WybranyKlient);
@@ -190,7 +258,19 @@ namespace Zad_4_Kasyno.ViewModels
             Nazwisko = string.Empty;
             Telefon = string.Empty;
             Adres = string.Empty;
+            Portfel = 0;
             
+        }
+
+        private void Play()
+        {
+            if (portfel > 0)
+            {
+                Portfel = portfel - WybranaGra.cenaWejsciowa;
+                UpdateKlient();
+            }
+            else Uwagi = "Za malo srodkow na koncie";
+
         }
         #endregion
     }
